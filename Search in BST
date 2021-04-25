@@ -1,3 +1,7 @@
+Link to the problem:
+https://practice.geeksforgeeks.org/problems/search-a-node-in-bst/1
+
+
 boolean search(Node root, int x)
     {
 	    // Your code here

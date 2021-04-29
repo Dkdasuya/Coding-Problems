@@ -1,0 +1,25 @@
+Link to the Problem:
+https://practice.geeksforgeeks.org/problems/find-the-closest-element-in-bst/1
+
+static int mindiff = Integer.MAX_VALUE;
+    static int maxDiff(Node  root, int K) 
+    { 
+        // Write your code here
+        mindiff=Integer.MAX_VALUE;
+        while(root!=null){
+            if(root.data==K)
+                return 0;
+            if(root.data>K){
+                int temp = Math.abs(K-root.data);
+                if(temp<mindiff)
+                    mindiff = temp;
+                root = root.left;
+            }else{
+                int temp = Math.abs(K-root.data);
+                if(temp<mindiff)
+                    mindiff = temp;
+                root = root.right;
+            }
+        }
+        return mindiff;
+    } 

@@ -1,0 +1,27 @@
+Link to the problem:
+
+https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1#
+
+ public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        ArrayList<Integer> list = new ArrayList<>();
+        Queue<Integer>  q = new LinkedList<>();
+        boolean visited[] = new boolean[V];
+        bfs(0,adj,visited,list,q);
+        
+        return list;
+    }
+    public void bfs(int s,ArrayList<ArrayList<Integer>> adj,boolean[] visited,ArrayList<Integer> list,Queue<Integer>  q){
+        q.add(s);
+        visited[s] = true;
+        while(!q.isEmpty()){
+            int v = q.poll();
+            list.add(v);
+            for(int i:adj.get(v)){
+                if(!visited[i])
+                    q.add(i);
+                    visited[i] = true;
+            }
+        }
+    }

@@ -1,0 +1,37 @@
+Link to the Problem:
+
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+
+class Solution 
+{
+    //Function to detect cycle in a directed graph.
+    public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // code here
+        boolean visited[] = new boolean[V];
+        
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                boolean helper[]=new boolean[V];
+                boolean ans = checkCycle(i,visited,helper,adj);
+                if(ans) return true;
+            }
+        }
+        return false;
+    }
+    public boolean checkCycle(int s,boolean visited[],boolean helper[],ArrayList<ArrayList<Integer>> adj){
+        visited[s] = true;
+        helper[s] = true;
+        for(int i:adj.get(s)){
+            if(helper[i]) return true;
+            if(!visited[i]){
+                if(checkCycle(i,visited,helper,adj)) return true;
+            }
+        }
+        helper[s] = false;
+        return false;
+    }
+}
+
+
+//We are approaching the problem in a way that starting from any vertex if we get back to that vertex again then will return true.

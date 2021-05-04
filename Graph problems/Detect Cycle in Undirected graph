@@ -1,0 +1,43 @@
+Link to the Problem:
+
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1#
+
+
+class Solution
+{
+    //Function to detect cycle in an undirected graph.
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        boolean visited[] = new boolean[V];
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                if(checkCycle(i,visited,adj,-1))
+                    return true;
+            }
+        }
+        return false;
+    }
+    public boolean checkCycle(int s,boolean[] visited,ArrayList<ArrayList<Integer>> adj,int parent){
+        visited[s] = true;
+        for(int i:adj.get(s)){
+            if(visited[i] == false){
+                if(checkCycle(i,visited,adj,s)){
+                    return true;
+                }
+            }else if(parent!=i){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+
+//The Logic is : If we get back to the already visited node/vertex we will return true .
+//One corner case is : 
+// for two nodes/vertices like:--     3--4
+//there will be an entry for 4 in 3's arraylist and an entry for 3 in 4's arraylist and will always return true.
+//Therefore, we will maintain an parent integer which will tell us that whose the parent node of this node .
+//If i encounter parent node we will ignore that .

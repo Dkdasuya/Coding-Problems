@@ -1,0 +1,32 @@
+Link to the problem:
+
+
+https://leetcode.com/problems/subarray-sums-divisible-by-k/submissions/
+
+
+class Solution {
+    public int subarraysDivByK(int[] A, int K) {
+        int count = 0;
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        int sum = 0;
+        hm.put(0,1);
+        int rem = 0;
+        for(int i=0;i<A.length;i++){
+            sum = sum+A[i];
+            rem = sum%K;
+            if(rem<0) rem = rem+K;
+            if(hm.containsKey(rem)){
+                 count +=hm.get(rem);
+                hm.put(rem,hm.get(rem)+1);
+            }else{
+                hm.put(rem,1);
+            }
+            
+        }
+        return count;
+    }
+}
+
+//Using the concept of suming up the elements and simultaneously storing the value of their remainders.
+//and check whether the current remainder has appeared before or not .
+//if negative sum occured convert it into positive remainder by adding it with K.

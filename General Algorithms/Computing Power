@@ -1,0 +1,30 @@
+To compute power of two numbers in an efficient way
+Time complexity  O(logN)
+where N is the power to be computed.
+
+Here we are calculating a to the power of b.
+
+import java.lang.*;
+import java.util.*;
+
+
+class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(power(a,b));
+    }
+    public static int power(int a,int b){
+        int result = 1;
+        while(b>0){
+            if(b%2!=0){
+                result = result*a;
+            }
+            a = a*a;
+            b= b/2;
+        }
+        return result;
+    }
+}
+

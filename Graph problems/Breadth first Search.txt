@@ -12,6 +12,7 @@ https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1#
         
         return list;
     }
+//This content is just for checking the merge function of the git.
     public void bfs(int s,ArrayList<ArrayList<Integer>> adj,boolean[] visited,ArrayList<Integer> list,Queue<Integer>  q){
         q.add(s);
         visited[s] = true;
